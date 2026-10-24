@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1F5A43">
+  <meta name="description" content="微光 · 一个在本机运行的志愿活动平台，按你的喜好推荐活动，也可以发起自己的公益行动。">
+  <title>微光 · 让善意遇见彼此</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="is-booting">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-logo" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4.1"/>
+      <path d="M12 2.2v2.3M12 19.5v2.3M2.2 12h2.3M19.5 12h2.3M4.9 4.9l1.65 1.65M17.45 17.45l1.65 1.65M19.1 4.9l-1.65 1.65M6.55 17.45 4.9 19.1"/>
+    </symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="m15.6 8.4-2.05 5.15L8.4 15.6l2.05-5.15L15.6 8.4Z"/>
+    </symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="7" rx="2"/>
+      <rect x="14" y="3" width="7" height="7" rx="2"/>
+      <rect x="3" y="14" width="7" height="7" rx="2"/>
+      <rect x="14" y="14" width="7" height="7" rx="2"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"/>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="3.6"/>
+      <path d="M4.8 20.2c.7-3.65 3.55-5.8 7.2-5.8s6.5 2.15 7.2 5.8"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="10.8" cy="10.8" r="6.8"/>
+      <path d="m16 16 4.4 4.4"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M20 10.2c0 5.1-8 11-8 11s-8-5.9-8-11a8 8 0 1 1 16 0Z"/>
+      <circle cx="12" cy="10.2" r="2.6"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5.2l3.4 2"/>
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3.2"/>
+      <path d="M2.8 19.2c.55-3.3 3.1-5.15 6.2-5.15s5.65 1.85 6.2 5.15"/>
+      <path d="M15.6 5.1a3.2 3.2 0 0 1 0 5.8M17.5 14.5c2.2.35 3.55 1.9 3.85 4.1"/>
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24">
+      <path d="M4.5 12h15M13.5 6l6 6-6 6"/>
+    </symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24">
+      <path d="M19.5 12h-15M10.5 6l-6 6 6 6"/>
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+      <rect x="3.5" y="5" width="17" height="16" rx="3"/>
+      <path d="M8 3v4M16 3v4M3.5 9.5h17"/>
+    </symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24">
+      <path d="M20.5 3.5C12 3.7 5.2 6.2 4.4 12.8c-.45 3.8 2.35 6.6 6.05 6.2 6.5-.7 9.7-7.4 10.05-15.5Z"/>
+      <path d="M4 21c1.8-5.2 5.7-9.2 11.4-11.3"/>
+    </symbol>
+    <symbol id="i-hands" viewBox="0 0 24 24">
+      <path d="m6.3 12.4 3.1-3.1a0.8 0.8 0 0 1 1.1 0l2.3 2.3 3.7-3.7a1.9 1.9 0 0 1 2.7 2.7l-5.1 5.1a3.2 3.2 0 0 1-4.5 0l-3.3-3.3Z"/>
+      <path d="M8 4.2 5.2 7a3 3 0 0 0 0 4.2l2.5 2.5M16 4.2 18.8 7a3 3 0 0 1 0 4.2l-1.2 1.2"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M4 4.8A2.3 2.3 0 0 1 6.3 2.5H20v17.2H6.8A2.8 2.8 0 0 0 4 22.5V4.8Z"/>
+      <path d="M4 19.7A2.8 2.8 0 0 1 6.8 17H20M8 6.5h8M8 10h6"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M20.8 5.9a5.1 5.1 0 0 0-7.2 0L12 7.5l-1.6-1.6a5.1 5.1 0 0 0-7.2 7.2L12 21l8.8-7.9a5.1 5.1 0 0 0 0-7.2Z"/>
+    </symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="7" cy="8" rx="2.2" ry="2.8"/>
+      <ellipse cx="12" cy="5.8" rx="2.2" ry="2.9"/>
+      <ellipse cx="17" cy="8" rx="2.2" ry="2.8"/>
+      <path d="M12 11c-3.2 0-5.8 2.4-5.8 5.1 0 1.7 1.4 2.8 3.2 2.8 1 0 1.8-.35 2.6-.35s1.6.35 2.6.35c1.8 0 3.2-1.1 3.2-2.8C17.8 13.4 15.2 11 12 11Z"/>
+    </symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24">
+      <path d="m12 2.8 1.55 5.55L19.2 10l-5.65 1.65L12 17.2l-1.55-5.55L4.8 10l5.65-1.65L12 2.8Z"/>
+      <path d="m18.8 16 .7 2.5 2.5.7-2.5.7-.7 2.5-.7-2.5-2.5-.7 2.5-.7.7-2.5Z"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="m5 12.5 4.5 4.5L19 7"/>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M9.5 4H5.8A2.8 2.8 0 0 0 3 6.8v10.4A2.8 2.8 0 0 0 5.8 20h3.7"/>
+      <path d="M16 8l4 4-4 4M20 12H9"/>
+    </symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24">
+      <path d="M4 7h10M18 7h2M4 17h2M10 17h10"/>
+      <circle cx="16" cy="7" r="2.2"/>
+      <circle cx="8" cy="17" r="2.2"/>
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6"/>
+    </symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24">
+      <path d="m15 5-7 7 7 7"/>
+    </symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24">
+      <path d="M4 6h16M7 12h10M10 18h4"/>
+    </symbol>
+    <symbol id="i-send" viewBox="0 0 24 24">
+      <path d="m21 3-7.2 18-3.4-7.4L3 10.2 21 3Z"/>
+      <path d="M10.4 13.6 21 3"/>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7.2v5.5M12 16.4v.2"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 11v5M12 7.6v.2"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 2.8 20 6v5.7c0 4.6-3.2 7.8-8 9.5-4.8-1.7-8-4.9-8-9.5V6l8-3.2Z"/>
+      <path d="m8.8 11.8 2.2 2.2 4.3-4.3"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="3"/>
+      <path d="m4 7 8 6 8-6"/>
+    </symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+      <path d="M20 6v5h-5M4 18v-5h5"/>
+      <path d="M18.2 9A7 7 0 0 0 6 6.8L4 9M5.8 15A7 7 0 0 0 18 17.2l2-2.2"/>
+    </symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24">
+      <path d="M9.5 5.5c-3 1.3-4.8 3.7-4.8 6.7v6.3h6.2v-6.2H7.4c.15-1.8 1.15-3.2 2.9-4.1L9.5 5.5ZM19.3 5.5c-3 1.3-4.8 3.7-4.8 6.7v6.3h6.2v-6.2h-3.5c.15-1.8 1.15-3.2 2.9-4.1l-.8-2.7Z"/>
+    </symbol>
+  </svg>
+
+  <header id="topbar" class="topbar"></header>
+
+  <main id="main" class="main" tabindex="-1">
+    <div class="boot-screen">
+      <span class="boot-mark"><svg class="icon"><use href="#i-logo"></use></svg></span>
+      <p>正在点亮微光…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-mark"><svg class="icon"><use href="#i-logo"></use></svg></span>
+        <div><strong>微光</strong><span>让善意遇见彼此</span></div>
+      </div>
+      <p class="footer-note">本地运行 · 所有账号与活动数据只保存在这台电脑</p>
+      <div class="footer-meta">VOLUNTEER · TOGETHER</div>
+    </div>
+  </footer>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="移动端导航"></nav>
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="false"></div>
+
+  <noscript>
+    <div class="noscript">请启用 JavaScript 后使用微光。</div>
+  </noscript>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
