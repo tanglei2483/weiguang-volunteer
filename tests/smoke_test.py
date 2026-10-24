@@ -34,7 +34,8 @@ class Client:
         self.base_url = base_url
         self.jar = CookieJar()
         self.opener = urllib.request.build_opener(
-            urllib.request.HTTPCookieProcessor(self.jar)
+            urllib.request.ProxyHandler({}),
+            urllib.request.HTTPCookieProcessor(self.jar),
         )
 
     def request(self, method: str, path: str, body=None):
@@ -92,10 +93,12 @@ def expect_status(fn, status: int, label: str) -> None:
 
 
 def wait_for_server(base_url: str, timeout: float = 12.0) -> None:
+    # Loopback requests must never go through a system/corporate proxy.
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
     deadline = time.time() + timeout
     while time.time() < deadline:
         try:
-            with urllib.request.urlopen(base_url + "/api/health", timeout=0.5) as response:
+            with opener.open(base_url + "/api/health", timeout=0.5) as response:
                 if response.status == 200:
                     return
         except Exception:
@@ -163,7 +166,7 @@ def main() -> None:
         check(status == 200 and public_detail["activity"]["contact"] == "", "未登录详情隐藏联系方式")
 
         index_request = urllib.request.Request(base_url + "/")
-        with urllib.request.urlopen(index_request, timeout=5) as response:
+        with public.opener.open(index_request, timeout=5) as response:
             html = response.read().decode("utf-8")
         check(response.status == 200 and "微光" in html and "/app.js" in html, "首页静态资源可访问")
 
